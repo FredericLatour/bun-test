@@ -1,20 +1,21 @@
 {
+  "type": "module",
   "scripts": {
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "@shopify/storefront-api-client": "^0.2.2",
-    "drizzle-orm": "^0.29.3",
-    "effect": "^2.2.3",
-    "hono": "^3.12.9",
-    "kysely": "^0.27.2",
+    "@shopify/storefront-api-client": "^1.0.0",
+    "drizzle-orm": "^0.31.2",
+    "effect": "^3.4.7",
+    "hono": "^4.4.11",
+    "kysely": "^0.27.3",
     "mockdate": "^3.0.5",
-    "mysql2": "^3.9.1",
+    "mysql2": "^3.10.2",
     "superjson": "^2.2.1",
-    "tslog": "^4.9.2",
-    "zod": "^3.22.4"
+    "tslog": "^4.9.3",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "bun-types": "^1.0.25"
+    "bun-types": "^1.1.18"
   }
 }

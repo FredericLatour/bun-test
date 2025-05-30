@@ -1,4 +1,4 @@
-import { Effect, pipe, ReadonlyRecord as RR } from "effect"
+import { Effect, pipe, Record as RR, Either } from "effect"
 
 export class ParseJsonError {
   readonly _tag = "ParseJsonError"
@@ -22,8 +22,8 @@ export const getObjFromError = (err: Error) => {
 const parseJson2 = (s: string) =>
   pipe(
     Effect.if(s === "", {
-      onTrue: Effect.fail(new EmptyJsonError("empty string")),
-      onFalse: Effect.succeed(s),
+      onTrue: () => Effect.fail(new EmptyJsonError("empty string")),
+      onFalse: () =>Effect.succeed(s),
     }),
     Effect.tryMap({
       try: () => JSON.parse(s) as Record<string, string>,
@@ -132,6 +132,15 @@ const getIp5 = (s: string, emptyJson: "error" | "noError") =>
     Effect.map((s) => `IP is ${s}`),
   )
 
+  const getIp6 = (s: string) =>
+    Effect.gen(function* () {
+      const t = "test"
+      const json = yield* parseJson2(s)
+      const ip = yield* RR.get("ip")(json)
+
+      return Either.match
+    })
+  
 
 const jsonStrings = {
   wrong: `{"ip": "192.168.0.1", "name" "whatever"}`,
